@@ -1150,15 +1150,68 @@ function setTheme(theme) {
 }
 
 function initMobileMenu() {
+    console.log('Initializing mobile menu...');
+
     const btn = document.getElementById('menuBtn');
     const nav = document.getElementById('navGroup');
+
+    console.log('Menu button:', btn);
+    console.log('Nav group:', nav);
+
     if (btn && nav) {
-        btn.addEventListener('click', () => {
+        console.log('Both elements found, attaching event listener...');
+
+        // Remove any existing listeners
+        const newBtn = btn.cloneNode(true);
+        btn.parentNode.replaceChild(newBtn, btn);
+
+        // Add click event listener
+        newBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Menu button clicked!');
             nav.classList.toggle('active');
-            btn.innerHTML = nav.classList.contains('active') ? '<i class="ri-close-line"></i>' : '<i class="ri-menu-line"></i>';
+            const isActive = nav.classList.contains('active');
+            console.log('Menu is now:', isActive ? 'open' : 'closed');
+            newBtn.innerHTML = isActive ? '<i class="ri-close-line"></i>' : '<i class="ri-menu-line"></i>';
         });
+
+        // Also try with onclick as backup
+        newBtn.onclick = function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Menu button onclick triggered!');
+            nav.classList.toggle('active');
+            const isActive = nav.classList.contains('active');
+            newBtn.innerHTML = isActive ? '<i class="ri-close-line"></i>' : '<i class="ri-menu-line"></i>';
+        };
+
+        console.log('Mobile menu initialized successfully!');
+    } else {
+        console.error('Mobile menu elements not found!', { btn, nav });
     }
 }
+
+
+
+// Global function for inline onclick (fallback)
+function toggleMobileMenu() {
+    console.log('toggleMobileMenu called!');
+    const nav = document.getElementById('navGroup');
+    const btn = document.getElementById('menuBtn');
+
+    if (nav && btn) {
+        nav.classList.toggle('active');
+        const isActive = nav.classList.contains('active');
+        console.log('Menu toggled, now:', isActive ? 'open' : 'closed');
+        btn.innerHTML = isActive ? '<i class="ri-close-line"></i>' : '<i class="ri-menu-line"></i>';
+    } else {
+        console.error('Elements not found in toggleMobileMenu');
+    }
+}
+
+// Make it globally accessible
+window.toggleMobileMenu = toggleMobileMenu;
 
 function showToast(msg) {
     const toast = document.createElement('div');
