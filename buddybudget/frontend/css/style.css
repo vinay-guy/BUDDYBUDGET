@@ -848,7 +848,7 @@ body {
     }
 
     .nav-group.active {
-        display: flex;
+        display: flex !important;
         flex-direction: column;
         width: 100%;
         margin-top: 1rem;
@@ -1039,7 +1039,7 @@ body {
     }
 
     .menu-btn {
-        display: block;
+        display: block !important;
     }
 
     .hero h1 {
