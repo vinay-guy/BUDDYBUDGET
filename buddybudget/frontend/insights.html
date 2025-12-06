@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insights - BuddyBudget</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;600;700&family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">BuddyBudget</div>
+        <button id="menuBtn" class="menu-btn"><i class="ri-menu-line"></i></button>
+        <div class="nav-group" id="navGroup">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="add.html">Add Transaction</a></li>
+                <li><a href="budget.html">Budgets & Goals</a></li>
+                <li><a href="insights.html" class="active">Insights</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+            <div class="gamification-bar">
+                <div class="streak-container" title="Daily Streak">
+                    <i class="ri-fire-line"></i> <span id="streakCount">0</span>
+                </div>
+                <div class="xp-container" title="XP Progress">
+                    <span class="level-badge" id="userLevel">Lvl 1</span>
+                    <div class="xp-bar-bg">
+                        <div class="xp-bar-fill" id="xpBar" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="custom-currency-selector" id="customCurrencySelector">
+                <div class="selected-currency">
+                    <i id="currentCurrencyIcon" class="ri-money-dollar-circle-line"></i>
+                </div>
+                <div class="currency-options" id="currencyOptions">
+                    <div class="currency-option" data-value="USD"><i class="ri-money-dollar-circle-line"></i></div>
+                    <div class="currency-option" data-value="INR"><i class="ri-money-rupee-circle-line"></i></div>
+                    <div class="currency-option" data-value="EUR"><i class="ri-money-euro-circle-line"></i></div>
+                    <div class="currency-option" data-value="GBP"><i class="ri-money-pound-circle-line"></i></div>
+                </div>
+            </div>
+            <div id="themeToggle"></div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="grid-2">
+            <!-- Financial Health Score -->
+            <section class="stat-card" style="text-align:center; position:relative; overflow:hidden;">
+                <h3>Financial Health Score</h3>
+                <div style="position:relative; width:150px; height:150px; margin:1.5rem auto;">
+                    <svg viewBox="0 0 36 36" class="circular-chart">
+                        <path class="circle-bg"
+                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        <path class="circle" stroke-dasharray="85, 100"
+                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                        <text x="18" y="20.35" class="percentage" id="healthScore">85</text>
+                    </svg>
+                </div>
+                <p id="healthMsg" class="text-muted">Excellent! You're a financial master. <i
+                        class="ri-trophy-line"></i></p>
+                <button onclick="exportData()" class="btn-outline" style="margin-top:1rem;"><i
+                        class="ri-download-cloud-line"></i> Download Report</button>
+            </section>
+
+            <!-- Friends Leaderboard -->
+            <section class="stat-card">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+                    <h3>Friends Leaderboard</h3>
+                    <button onclick="addFriend()" class="icon-btn" title="Add Friend"><i
+                            class="ri-user-add-line"></i></button>
+                </div>
+                <div id="friendsList" style="max-height: 300px; overflow-y: auto;">
+                    <!-- Populated by JS -->
+                </div>
+                <button onclick="shareStats()" class="cta-button small" style="margin-top:1rem; width:100%;"><i
+                        class="ri-rocket-line"></i> Share My
+                    Stats</button>
+            </section>
+        </div>
+
+        <!-- Analytics Chart -->
+        <section class="stat-card" style="margin-top:2rem;">
+            <div
+                style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem; flex-wrap:wrap; gap:1rem;">
+                <h3>Expense Analytics</h3>
+                <div class="chart-controls">
+                    <button class="btn-outline chart-btn active" onclick="switchChart('doughnut')">Pie</button>
+                    <button class="btn-outline chart-btn" onclick="switchChart('bar')">Bar</button>
+                    <button class="btn-outline chart-btn" onclick="switchChart('line')">Trend</button>
+                    <button class="btn-outline chart-btn" onclick="switchChart('weekly')">Weekly</button>
+                </div>
+            </div>
+            <div style="height: 400px; position: relative;">
+                <canvas id="expenseChart"></canvas>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>

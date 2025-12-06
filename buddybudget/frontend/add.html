@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Transaction - BuddyBudget</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;600;700&family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">BuddyBudget</div>
+        <button id="menuBtn" class="menu-btn"><i class="ri-menu-line"></i></button>
+        <div class="nav-group" id="navGroup">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="add.html" class="active">Add Transaction</a></li>
+                <li><a href="budget.html">Budgets & Goals</a></li>
+                <li><a href="insights.html">Insights</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+            <div class="gamification-bar">
+                <div class="streak-container" title="Daily Streak">
+                    <i class="ri-fire-line"></i> <span id="streakCount">0</span>
+                </div>
+                <div class="xp-container" title="XP Progress">
+                    <span class="level-badge" id="userLevel">Lvl 1</span>
+                    <div class="xp-bar-bg">
+                        <div class="xp-bar-fill" id="xpBar" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="custom-currency-selector" id="customCurrencySelector">
+                <div class="selected-currency">
+                    <i id="currentCurrencyIcon" class="ri-money-dollar-circle-line"></i>
+                </div>
+                <div class="currency-options" id="currencyOptions">
+                    <div class="currency-option" data-value="USD"><i class="ri-money-dollar-circle-line"></i></div>
+                    <div class="currency-option" data-value="INR"><i class="ri-money-rupee-circle-line"></i></div>
+                    <div class="currency-option" data-value="EUR"><i class="ri-money-euro-circle-line"></i></div>
+                    <div class="currency-option" data-value="GBP"><i class="ri-money-pound-circle-line"></i></div>
+                </div>
+            </div>
+            <div id="themeToggle"></div>
+        </div>
+    </nav>
+
+    <main class="centered-container">
+        <div class="form-card-clean">
+            <!-- Dynamic Balance Display -->
+            <div
+                style="text-align:center; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">
+                <span
+                    style="font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Current
+                    Balance</span>
+                <div id="currentBalanceDisplay"
+                    style="font-family: var(--font-mono); font-size: 2rem; font-weight: 700; color: var(--text-color);">
+                    $0.00
+                </div>
+                <div id="incomeDisplay" class="hidden"
+                    style="font-size: 0.9rem; color: var(--success-color); margin-top: 0.5rem;">
+                    Total Income: <span id="totalIncomeDisplay">$0.00</span>
+                </div>
+            </div>
+
+            <form id="transactionForm">
+                <!-- Toggle Moved Inside Form -->
+                <div class="type-toggle-container">
+                    <input type="radio" name="type" id="type-expense" value="expense" checked>
+                    <label for="type-expense" class="toggle-btn">Expense</label>
+
+                    <input type="radio" name="type" id="type-income" value="income">
+                    <label for="type-income" class="toggle-btn">Income</label>
+
+                    <div class="toggle-slider"></div>
+                </div>
+
+                <h2 class="form-title" style="text-align:center; margin-bottom:0.5rem;">New Entry</h2>
+
+                <div class="amount-group">
+                    <input type="number" id="amount" name="amount" class="large-amount-input" placeholder="0.00"
+                        step="0.01" required>
+                </div>
+
+                <div class="input-grid" id="inputGrid">
+                    <div class="icon-input" id="category-wrapper">
+                        <span class="input-icon"><i class="ri-folder-line"></i></span>
+                        <select id="category" name="category" required>
+                            <option value="" disabled selected>Category</option>
+                            <option value="food">Food & Dining</option>
+                            <option value="transport">Transportation</option>
+                            <option value="utilities">Utilities</option>
+                            <option value="entertainment">Entertainment</option>
+                            <option value="shopping">Shopping</option>
+                            <option value="health">Health & Wellness</option>
+                            <option value="education">Education</option>
+                            <option value="travel">Travel</option>
+                            <option value="subscriptions">Subscriptions</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="icon-input date-container">
+                        <span class="input-icon"><i class="ri-calendar-line"></i></span>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+                    <div class="icon-input full-grid">
+                        <span class="input-icon"><i class="ri-file-text-line"></i></span>
+                        <input type="text" id="description" name="description" placeholder="Description (Optional)">
+                    </div>
+                </div>
+
+                <button type="submit" class="cta-button full-width glow-effect">
+                    <span id="submit-text">Log Expense</span>
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>
