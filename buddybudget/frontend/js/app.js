@@ -1159,40 +1159,14 @@ function initMobileMenu() {
     console.log('Nav group:', nav);
 
     if (btn && nav) {
-        console.log('Both elements found, attaching event listener...');
-
-        // Remove any existing listeners
-        const newBtn = btn.cloneNode(true);
-        btn.parentNode.replaceChild(newBtn, btn);
-
-        // Add click event listener
-        newBtn.addEventListener('click', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            console.log('Menu button clicked!');
-            nav.classList.toggle('active');
-            const isActive = nav.classList.contains('active');
-            console.log('Menu is now:', isActive ? 'open' : 'closed');
-            newBtn.innerHTML = isActive ? '<i class="ri-close-line"></i>' : '<i class="ri-menu-line"></i>';
-        });
-
-        // Also try with onclick as backup
-        newBtn.onclick = function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            console.log('Menu button onclick triggered!');
-            nav.classList.toggle('active');
-            const isActive = nav.classList.contains('active');
-            newBtn.innerHTML = isActive ? '<i class="ri-close-line"></i>' : '<i class="ri-menu-line"></i>';
-        };
-
-        console.log('Mobile menu initialized successfully!');
+        console.log('Both elements found!');
+        // The onclick handler is already set in HTML, so we don't need to do anything
+        // Just log that it's ready
+        console.log('Mobile menu ready! (using inline onclick handler)');
     } else {
         console.error('Mobile menu elements not found!', { btn, nav });
     }
 }
-
-
 
 // Global function for inline onclick (fallback)
 function toggleMobileMenu() {
