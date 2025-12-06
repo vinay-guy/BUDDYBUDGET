@@ -2,6 +2,12 @@
 
 A modern, full-stack personal finance management application that helps you track expenses, manage budgets, and gain financial insights.
 
+## 🌐 Live Demo
+
+**🚀 [View Live Website](https://vinay-guy.github.io/BUDDYBUDGET/)**
+
+> **Note**: The live demo shows the frontend interface. Backend functionality requires local setup (see instructions below).
+
 ## ✨ Features
 
 - **Expense Tracking**: Add, view, and manage your daily expenses
