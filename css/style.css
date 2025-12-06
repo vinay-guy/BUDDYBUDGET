@@ -1275,3 +1275,245 @@ i[class^='ri-']:hover {
     vertical-align: middle;
     color: var(--text-color);
 }
+
+/* --- Enhanced Mobile Responsiveness --- */
+@media (max-width: 768px) {
+
+    /* Container and spacing */
+    .container {
+        padding: 1rem;
+    }
+
+    /* Navbar improvements */
+    .navbar {
+        padding: 1rem;
+    }
+
+    .logo {
+        font-size: 1.4rem;
+    }
+
+    .gamification-bar {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.5rem;
+    }
+
+    .xp-bar-bg {
+        width: 100%;
+    }
+
+    /* Hero section */
+    .hero {
+        padding: 2rem 1rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+        line-height: 1.3;
+    }
+
+    .hero p {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    .hero .cta-button {
+        padding: 0.875rem 2rem;
+        font-size: 1rem;
+    }
+
+    /* Stats grid */
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .stat-card {
+        padding: 1.25rem;
+    }
+
+    .amount {
+        font-size: 1.75rem;
+    }
+
+    /* Grid layouts */
+    .grid-2 {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .quick-actions-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+    }
+
+    .action-tile {
+        padding: 1.25rem 0.75rem;
+    }
+
+    .tile-icon {
+        font-size: 1.75rem !important;
+    }
+
+    .tile-label {
+        font-size: 0.85rem;
+    }
+
+    /* Transaction cards */
+    .transaction-card {
+        padding: 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .t-left {
+        width: 100%;
+    }
+
+    .t-right {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .t-icon-box {
+        width: 40px;
+        height: 40px;
+        font-size: 1.25rem;
+    }
+
+    .t-info h4 {
+        font-size: 0.95rem;
+    }
+
+    .t-amount {
+        font-size: 1rem;
+    }
+
+    /* Budget cards */
+    .budget-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .budget-card {
+        padding: 1.25rem;
+    }
+
+    /* Forms */
+    .form-card-clean {
+        padding: 1.5rem;
+        border-radius: 24px;
+    }
+
+    .large-amount-input {
+        font-size: 2.5rem;
+        width: 180px;
+    }
+
+    .input-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Theme toggle */
+    .theme-toggle-tab {
+        flex-wrap: wrap;
+    }
+
+    .theme-option {
+        padding: 0.35rem 0.65rem;
+        font-size: 0.9rem;
+    }
+
+    /* Currency selector - make it more touch-friendly */
+    .custom-currency-selector {
+        margin-top: 0.5rem;
+    }
+
+    .selected-currency {
+        padding: 0.5rem;
+    }
+
+    .selected-currency i {
+        font-size: 24px;
+    }
+
+    .currency-option i {
+        font-size: 24px;
+    }
+
+    /* Insights page */
+    .insights-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Profile page */
+    .profile-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .profile-card {
+        padding: 1.25rem;
+    }
+
+    /* Better touch targets */
+    button,
+    .cta-button,
+    .btn-outline,
+    .icon-btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    /* Adjust font sizes for readability */
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.25rem;
+    }
+
+    /* Navigation adjustments */
+    .nav-links a {
+        padding: 0.75rem 0;
+        font-size: 1.05rem;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.75rem;
+    }
+
+    .hero p {
+        font-size: 0.95rem;
+    }
+
+    .logo {
+        font-size: 1.25rem;
+    }
+
+    .large-amount-input {
+        font-size: 2rem;
+        width: 150px;
+    }
+
+    .quick-actions-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-card h3 {
+        font-size: 0.95rem;
+    }
+
+    .amount {
+        font-size: 1.5rem;
+    }
+}
