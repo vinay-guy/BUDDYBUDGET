@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - BuddyBudget</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;600;700&family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">BuddyBudget</div>
+        <button id="menuBtn" class="menu-btn"><i class="ri-menu-line"></i></button>
+        <div class="nav-group" id="navGroup">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="add.html">Add Transaction</a></li>
+                <li><a href="budget.html">Budgets & Goals</a></li>
+                <li><a href="insights.html">Insights</a></li>
+                <li><a href="profile.html" class="active">Profile</a></li>
+            </ul>
+            <div class="gamification-bar">
+                <div class="streak-container" title="Daily Streak">
+                    <i class="ri-fire-line"></i> <span id="streakCount">0</span>
+                </div>
+                <div class="xp-container" title="XP Progress">
+                    <span class="level-badge" id="userLevel">Lvl 1</span>
+                    <div class="xp-bar-bg">
+                        <div class="xp-bar-fill" id="xpBar" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="custom-currency-selector" id="customCurrencySelector">
+                <div class="selected-currency">
+                    <i id="currentCurrencyIcon" class="ri-money-dollar-circle-line"></i>
+                </div>
+                <div class="currency-options" id="currencyOptions">
+                    <div class="currency-option" data-value="USD"><i class="ri-money-dollar-circle-line"></i></div>
+                    <div class="currency-option" data-value="INR"><i class="ri-money-rupee-circle-line"></i></div>
+                    <div class="currency-option" data-value="EUR"><i class="ri-money-euro-circle-line"></i></div>
+                    <div class="currency-option" data-value="GBP"><i class="ri-money-pound-circle-line"></i></div>
+                </div>
+            </div>
+            <div id="themeToggle"></div>
+        </div>
+    </nav>
+
+    <main class="centered-container">
+        <div class="form-card-clean" style="text-align: center;">
+
+            <!-- View Mode -->
+            <div id="profileView">
+                <div class="profile-avatar-large" id="viewAvatar"><i class="ri-user-line"></i></div>
+                <h2 id="viewName" style="margin-bottom: 0.2rem;">User</h2>
+                <p id="viewTitle" style="color: var(--primary-color); font-weight: 600; margin-bottom: 1.5rem;">Novice
+                    Saver</p>
+
+                <div class="stats-row">
+                    <div class="mini-stat">
+                        <span class="label">Level</span>
+                        <span class="value" id="viewLevel">1</span>
+                    </div>
+                    <div class="mini-stat">
+                        <span class="label">Streak</span>
+                        <span class="value" id="viewStreak">0</span>
+                    </div>
+                    <div class="mini-stat">
+                        <span class="label">XP</span>
+                        <span class="value" id="viewXP">0</span>
+                    </div>
+                </div>
+                <div class="bio-section">
+                    "<span id="viewBio">No bio set yet.</span>"
+                </div>
+
+                <div style="margin-top: 2rem;">
+                    <button onclick="toggleEditMode()" class="cta-button small"
+                        style="width: auto; margin-bottom: 1.5rem;">Edit Profile</button>
+
+                    <div style="border-top: 1px solid var(--border-color); padding-top: 1.5rem;">
+                        <h4 style="margin-bottom: 1rem; color: var(--text-muted);">Data Management</h4>
+                        <button onclick="resetTransactions()" class="btn-outline"
+                            style="color: var(--danger-color); border-color: var(--danger-color); font-size: 0.9rem; width: 100%;">
+                            <i class="ri-alert-line"></i> Reset All Transactions
+                        </button>
+                        <button onclick="resetGamification()" class="btn-outline"
+                            style="color: var(--danger-color); border-color: var(--danger-color); font-size: 0.9rem; width: 100%; margin-top: 0.5rem;">
+                            <i class="ri-restart-line"></i> Reset Level & Streak
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Edit Mode -->
+            <form id="profileForm" class="hidden" onsubmit="saveProfile(event)">
+                <h3 style="margin-bottom: 1.5rem;">Edit Profile</h3>
+
+                <div class="avatar-selector">
+                    <p style="margin-bottom: 0.5rem; font-weight: 600;">Choose Avatar</p>
+                    <div class="avatar-options">
+                        <input type="radio" name="avatar" id="av1" value='<i class="ri-user-line"></i>' checked>
+                        <label for="av1"><i class="ri-user-line"></i></label>
+
+                        <input type="radio" name="avatar" id="av2" value='<i class="ri-user-3-line"></i>'>
+                        <label for="av2"><i class="ri-user-3-line"></i></label>
+
+                        <input type="radio" name="avatar" id="av3" value='<i class="ri-user-star-line"></i>'>
+                        <label for="av3"><i class="ri-user-star-line"></i></label>
+
+                        <input type="radio" name="avatar" id="av4" value='<i class="ri-user-heart-line"></i>'>
+                        <label for="av4"><i class="ri-user-heart-line"></i></label>
+
+                        <input type="radio" name="avatar" id="av5" value='<i class="ri-user-smile-line"></i>'>
+                        <label for="av5"><i class="ri-user-smile-line"></i></label>
+                    </div>
+                </div>
+
+                <div class="icon-input" style="margin-bottom: 1rem;">
+                    <span class="input-icon"><i class="ri-id-card-line"></i></span>
+                    <input type="text" id="editName" name="name" placeholder="Your Name" required>
+                </div>
+
+                <div class="icon-input" style="margin-bottom: 1rem;">
+                    <span class="input-icon"><i class="ri-price-tag-3-line"></i></span>
+                    <input type="text" id="editTitle" name="title" placeholder="Title (e.g. Master Saver)">
+                </div>
+
+                <div class="icon-input" style="margin-bottom: 1.5rem;">
+                    <span class="input-icon"><i class="ri-file-text-line"></i></span>
+                    <input type="text" id="editBio" name="bio" placeholder="Short Bio">
+                </div>
+
+                <div style="display: flex; gap: 1rem;">
+                    <button type="button" onclick="toggleEditMode()" class="btn-outline"
+                        style="flex: 1;">Cancel</button>
+                    <button type="submit" class="cta-button" style="flex: 1;">Save</button>
+                </div>
+            </form>
+
+        </div>
+    </main>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>

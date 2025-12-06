@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BuddyBudget - Premium Finance Tracking</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">BuddyBudget</div>
+        <button id="menuBtn" class="menu-btn"><i class="ri-menu-line"></i></button>
+        <div class="nav-group" id="navGroup">
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="add.html">Add Transaction</a></li>
+                <li><a href="budget.html">Budgets & Goals</a></li>
+                <li><a href="insights.html">Insights</a></li>
+                <li><a href="profile.html">Profile</a></li>
+            </ul>
+            <div class="gamification-bar">
+                <div class="streak-container" title="Daily Streak">
+                    <i class="ri-fire-line"></i> <span id="streakCount">0</span>
+                </div>
+                <div class="xp-container" title="XP Progress">
+                    <span class="level-badge" id="userLevel">Lvl 1</span>
+                    <div class="xp-bar-bg">
+                        <div class="xp-bar-fill" id="xpBar" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="custom-currency-selector" id="customCurrencySelector">
+                <div class="selected-currency" id="selectedCurrency">
+                    <i id="currentCurrencyIcon" class="ri-money-dollar-circle-fill"></i>
+                </div>
+                <div class="currency-options" id="currencyOptions">
+                    <div class="currency-option" data-value="USD">
+                        <i class="ri-money-dollar-circle-fill"></i>
+                    </div>
+                    <div class="currency-option" data-value="INR">
+                        <i class="ri-money-rupee-circle-fill"></i>
+                    </div>
+                    <div class="currency-option" data-value="EUR">
+                        <i class="ri-money-euro-circle-fill"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- Theme Toggle Container -->
+            <div id="themeToggle"></div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Master Your Wealth <br> with <span class="highlight">BuddyBudget</span></h1>
+            <p>Experience the art of financial clarity. Track expenses, set ambitious goals, and watch your savings
+                grow.</p>
+            <a href="add.html" class="cta-button">Start Tracking</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Dashboard Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Total Savings</h3>
+                <p id="totalSavings" class="amount neutral">$0.00</p>
+            </div>
+            <div class="stat-card">
+                <h3>Income</h3>
+                <p id="totalIncome" class="amount positive">+$0.00</p>
+            </div>
+            <div class="stat-card">
+                <h3>Expenses</h3>
+                <p id="totalExpense" class="amount negative">-$0.00</p>
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <!-- Recent Transactions -->
+            <section>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+                    <h3>Recent Activity</h3>
+                    <a href="insights.html"
+                        style="color:var(--primary-color); text-decoration:none; font-weight:600;">View
+                        All &rarr;</a>
+                </div>
+                <div id="recentTransactions" class="transaction-list">
+                    <!-- Populated by JS -->
+                </div>
+            </section>
+
+            <!-- Quick Actions -->
+            <section>
+                <h3 style="margin-bottom:1.5rem;">Quick Actions</h3>
+                <div class="quick-actions-grid">
+                    <a href="add.html" class="action-tile">
+                        <span class="tile-icon"><i class="ri-money-dollar-circle-line"></i></span>
+                        <span class="tile-label">Log Expense</span>
+                    </a>
+                    <a href="add.html?type=income" class="action-tile">
+                        <span class="tile-icon"><i class="ri-hand-coin-line"></i></span>
+                        <span class="tile-label">Add Income</span>
+                    </a>
+                    <a href="budget.html" class="action-tile">
+                        <span class="tile-icon"><i class="ri-pie-chart-line"></i></span>
+                        <span class="tile-label">Manage Budgets</span>
+                    </a>
+                    <a href="budget.html" class="action-tile">
+                        <span class="tile-icon"><i class="ri-focus-3-line"></i></span>
+                        <span class="tile-label">Set Goals</span>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>
